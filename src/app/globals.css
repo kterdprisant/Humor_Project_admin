@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+/* Neutral admin chrome + chart tokens (reference dataviz palette). */
+:root {
+  --background: #f9f9f7;
+  --surface: #fcfcfb;
+  --foreground: #0b0b0b;
+  --ink-secondary: #52514e;
+  --ink-muted: #898781;
+  --hairline: #e1e0d9;
+  --axis: #c3c2b7;
+  --up: #2a78d6;
+  --down: #e34948;
+  --midpoint: #f0efec;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0d0d0d;
+    --surface: #1a1a19;
+    --foreground: #f0efec;
+    --ink-secondary: #c3c2b7;
+    --ink-muted: #898781;
+    --hairline: #2c2c2a;
+    --axis: #383835;
+    --up: #3987e5;
+    --down: #e66767;
+    --midpoint: #383835;
+  }
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-muted: var(--ink-muted);
+  --color-hairline: var(--hairline);
+  --color-axis: var(--axis);
+  --color-up: var(--up);
+  --color-down: var(--down);
+  --color-midpoint: var(--midpoint);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+}

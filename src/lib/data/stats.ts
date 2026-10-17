@@ -1,5 +1,6 @@
 import "server-only";
 
+import { connection } from "next/server";
 import { requireSuperadmin } from "@/lib/dal";
 import { createAdminClient } from "@/lib/supabase/admin";
 import { fetchAll } from "@/lib/data/fetch-all";
@@ -37,6 +38,9 @@ const isoDay = (d: Date) => d.toISOString().slice(0, 10);
 
 export async function getDashboardStats(range: RangeKey) {
   await requireSuperadmin();
+  // Uses the current time (Date.now) for the trend window, so this must only
+  // ever render for a real request, never in a prerender/prefetch pass.
+  await connection();
   const admin = createAdminClient();
 
   const [captions, votes, tallies, profiles] = await Promise.all([
